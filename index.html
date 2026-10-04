@@ -9,8 +9,33 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234b1535'/%3E%3Cpath d='M16 5v22M8 12c4 0 6 2 8 6M24 12c-4 0-6 2-8 6' fill='none' stroke='%23ffb000' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="gate-open">
   <a class="skip-link" href="#main">İçeriğe geç</a>
+  <div class="entry-gate" id="entry-gate" role="dialog" aria-modal="true" aria-labelledby="entry-title">
+    <form class="entry-card" id="entry-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfmiI7frOL1DtZtwmStOKPIRGei9b5Z89yMzjAhBlt4WPnGXg/formResponse" method="post" target="response-sink" autocomplete="off" data-connected="true">
+      <p class="entry-kicker">P BLOK / GİRİŞ</p>
+      <h2 id="entry-title">Önce iki küçük soru.</h2>
+
+      <label class="entry-field" for="visitor-name">
+        <span>Sen kimsin?</span>
+        <input id="visitor-name" name="entry.582645136" type="text" maxlength="80" placeholder="Adını yaz…" required>
+      </label>
+
+      <fieldset class="entry-choice">
+        <legend>Efkan’ı nasıl bilirsiniz?</legend>
+        <label><input name="entry.603608747" type="radio" value="İyi" required><span>İyi</span></label>
+        <label><input name="entry.603608747" type="radio" value="Çok iyi"><span>Çok iyi</span></label>
+        <label><input name="entry.603608747" type="radio" value="Muhteşem"><span>Muhteşem</span></label>
+        <label><input name="entry.603608747" type="radio" value="Götükalkık"><span>Götükalkık</span></label>
+      </fieldset>
+
+      <p class="entry-error" id="entry-error" role="alert"></p>
+      <button class="entry-submit" type="submit">Çalışmaya gir →</button>
+      <small>Yanıtın Efkan’ın özel cevap ekranına ulaşır.</small>
+    </form>
+    <iframe class="response-sink" name="response-sink" title="Yanıt gönderimi"></iframe>
+  </div>
+
   <div class="app-shell">
     <aside class="sidebar" aria-label="Ana menü">
       <button class="brand" data-view="dashboard" aria-label="Ana sayfaya dön">

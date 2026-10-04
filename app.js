@@ -630,3 +630,33 @@ document.querySelector("#past-count").textContent = pastQuestions.length;
 document.querySelector("#prediction-count").textContent = predictions.length;
 document.querySelector("#card-count").textContent = flashcards.length;
 renderAll();
+
+const entryGate = document.querySelector("#entry-gate");
+const entryForm = document.querySelector("#entry-form");
+const entryError = document.querySelector("#entry-error");
+
+function closeEntryGate() {
+  localStorage.setItem("gc-entry-complete", "1");
+  document.body.classList.remove("gate-open");
+  entryGate.hidden = true;
+}
+
+if (localStorage.getItem("gc-entry-complete") === "1") {
+  document.body.classList.remove("gate-open");
+  entryGate.hidden = true;
+} else {
+  window.setTimeout(() => document.querySelector("#visitor-name").focus(), 80);
+}
+
+entryForm.addEventListener("submit", event => {
+  if (entryForm.dataset.connected !== "true") {
+    event.preventDefault();
+    entryError.textContent = "Yanıt sistemi hazırlanıyor. Birazdan tekrar dene.";
+    return;
+  }
+  entryError.textContent = "";
+  const button = entryForm.querySelector(".entry-submit");
+  button.disabled = true;
+  button.textContent = "Yanıt gönderiliyor…";
+  window.setTimeout(closeEntryGate, 900);
+});
