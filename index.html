@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Göğüs cerrahisi kuruluna hazırlık: konu anlatımları, çıkmış sorular, olası sorular, hızlı tablolar ve klinik yönetim akışları.">
+  <meta name="theme-color" content="#4b1535">
+  <title>Çamda Can Sıkan Hasta Yakınını Neşterlemelik Göğüs Cerrahisi</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234b1535'/%3E%3Cpath d='M16 5v22M8 12c4 0 6 2 8 6M24 12c-4 0-6 2-8 6' fill='none' stroke='%23ffb000' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">İçeriğe geç</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Ana menü">
+      <button class="brand" data-view="dashboard" aria-label="Ana sayfaya dön">
+        <span class="brand-mark" aria-hidden="true">GC</span>
+        <span><strong>P BLOK / 04</strong><small>cerrahi çalışma atlası</small></span>
+      </button>
+
+      <div class="side-note">
+        <span>YARINKİ KURUL</span>
+        <strong>aktif hatırlama modu</strong>
+      </div>
+
+      <nav class="nav-list" id="main-nav">
+        <button class="nav-item active" data-view="dashboard"><span>⌂</span><b>Saray Muhallebicisi</b><small>Dünyanın En Güzel Yeri P Blok’ta Kurul Planlama</small></button>
+        <button class="nav-item" data-view="topics"><span>§</span><b>Konu anlatımları</b><em id="topic-count">16</em></button>
+        <button class="nav-item" data-view="past"><span>?</span><b>Çıkmış sorular</b><em id="past-count">0</em></button>
+        <button class="nav-item" data-view="predictions"><span>★</span><b>Çıkma ihtimali olan sorular</b><em id="prediction-count">0</em></button>
+        <button class="nav-item" data-view="tables"><span>↳</span><b>Hızlı tablolar</b></button>
+        <button class="nav-item" data-view="cards"><span>▰</span><b>Öğrenme kartları</b><em id="card-count">0</em></button>
+        <button class="nav-item" data-view="manage"><span>✓</span><b>Hastalığı Yönet</b></button>
+        <button class="nav-item" data-view="sources"><span>◉</span><b>Çam Sakura’dan Aydın’a Uzanan Bir Kaynak Haritası</b><em>28</em></button>
+      </nav>
+
+      <div class="progress-block">
+        <div><span>Genel ilerleme</span><strong id="side-progress-label">0%</strong></div>
+        <div class="meter"><i id="side-progress-bar"></i></div>
+        <small>İlerleme bu cihazda saklanır.</small>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" aria-label="Menüyü aç" aria-expanded="false">☰</button>
+        <label class="search-box" for="global-search">
+          <span aria-hidden="true">⌕</span>
+          <input id="global-search" type="search" placeholder="Konu, soru, eşik veya bulgu ara…" autocomplete="off">
+          <kbd>⌘ K</kbd>
+        </label>
+        <button class="icon-button" id="theme-toggle" aria-label="Renk temasını değiştir">◐</button>
+      </header>
+
+      <main id="main" tabindex="-1">
+        <section class="view active" id="view-dashboard" aria-labelledby="dashboard-title"></section>
+        <section class="view" id="view-topics" aria-labelledby="topics-title"></section>
+        <section class="view" id="view-past" aria-labelledby="past-title"></section>
+        <section class="view" id="view-predictions" aria-labelledby="predictions-title"></section>
+        <section class="view" id="view-tables" aria-labelledby="tables-title"></section>
+        <section class="view" id="view-cards" aria-labelledby="cards-title"></section>
+        <section class="view" id="view-manage" aria-labelledby="manage-title"></section>
+        <section class="view" id="view-sources" aria-labelledby="sources-title"></section>
+        <section class="view" id="view-search" aria-labelledby="search-title"></section>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
