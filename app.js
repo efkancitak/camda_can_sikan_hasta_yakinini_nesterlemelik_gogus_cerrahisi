@@ -468,7 +468,7 @@ function updateProgress() {
 }
 
 function pageHead(id, eyebrow, title, lede, stat, statLabel) {
-  return `<header class="page-head"><div><p class="eyebrow">${eyebrow}</p><h2 id="${id}">${title}</h2><p class="lede">${lede}</p></div>${stat ? `<div class="header-stat"><strong>${stat}</strong><span>${statLabel}</span></div>` : ""}</header>`;
+  return `<header class="page-head"><div><p class="eyebrow">${eyebrow}</p><h2 id="${id}">${title}</h2>${lede ? `<p class="lede">${lede}</p>` : ""}</div>${stat ? `<div class="header-stat"><strong>${stat}</strong><span>${statLabel}</span></div>` : ""}</header>`;
 }
 
 function renderDashboard() {
@@ -478,9 +478,7 @@ function renderDashboard() {
     <div class="dashboard-grid">
       <section class="hero-board">
         <span class="hero-stamp">910 SLAYT/SAYFA • 28 KAYNAK</span>
-        <p class="eyebrow">yarın yine kurul var</p>
         <h1 id="dashboard-title">Çamda Can Sıkan Hasta Yakınını <span>Neşterlemelik</span> Göğüs Cerrahisi</h1>
-        <p class="lede">Konu anlatımları ile çıkmış sorular birbirine bağlandı. Sık tekrar eden eşikler, klasik sözlü soruları ve klinik karar adımları tek çalışma akışında.</p>
         <div class="hero-actions"><button class="primary" data-view="predictions">★ Yüksek olasılıktan başla</button><button class="secondary" data-view="manage">✓ Hastalığı yönet</button></div>
         <div class="rapid-strip">
           <button data-view="predictions"><b>01</b>Çıkma potansiyeli<small>20 tahmin</small></button>
@@ -520,7 +518,7 @@ function renderPast() {
   let rows = pastQuestions;
   if (state.filter === "★ İşaretli") rows = rows.filter(q => state.starred.has(q.id));
   else if (state.filter !== "Tümü") rows = rows.filter(q => q.topic === state.filter);
-  target.innerHTML = `${pageHead("past-title", "ÇIKMIŞ + SÖZLÜ + VAKA", "Çıkmış sorular", "Aynı kavramın test, klasik ve vaka biçimleri tek havuzda. Cevabı açmadan önce yüksek sesle söyle.", rows.length, "gösterilen soru")}
+  target.innerHTML = `${pageHead("past-title", "ÇIKMIŞ + SÖZLÜ + VAKA", "Çıkmış sorular", "", rows.length, "gösterilen soru")}
     <div class="filter-row">${filters.map(f => `<button class="filter-chip ${f === state.filter ? "active" : ""}" data-filter="${esc(f)}">${esc(f)}</button>`).join("")}</div>
     <div class="question-list">${rows.length ? rows.map(q => `<article class="question-card" data-question-card="${q.id}"><div class="meta"><span>${esc(q.topic)}</span><span>${esc(q.source)}</span></div><h3>${esc(q.question)}</h3><button class="star-button ${state.starred.has(q.id) ? "active" : ""}" data-star="${q.id}" aria-label="Soruyu yıldızla">★</button><button class="secondary" data-answer="${q.id}">Cevabı göster</button><div class="answer"><strong>Cevap</strong><p>${esc(q.answer)}</p></div></article>`).join("") : `<div class="empty">Bu filtrede soru yok.</div>`}</div>`;
 }
@@ -537,7 +535,7 @@ function renderTables() {
 function renderCards() {
   const f = flashcards[state.flashIndex];
   document.querySelector("#view-cards").innerHTML = `${pageHead("cards-title", "AKTİF HATIRLAMA", "Öğrenme kartları", "Kartı çevir, cevabı söyle ve bildiğin kartları işaretle. Sıra bu cihazda saklanır.", `${state.knownCards.size}/${flashcards.length}`, "bilinen kart")}
-    <div class="flash-stage"><button class="flash-card" id="flash-card" aria-label="Kartı çevir"><div><p class="eyebrow">KART ${state.flashIndex + 1} / ${flashcards.length}</p><h3>${esc(f.front)}</h3><p class="flash-answer">${esc(f.back)}</p><small>Çevirmek için tıkla</small></div></button><aside class="flash-controls"><button class="primary" data-known="${f.id}">${state.knownCards.has(f.id) ? "Biliniyor ✓" : "Biliyordum"}</button><button class="secondary" data-next-card>Sonraki kart</button><button class="secondary" data-random-card>Rastgele kart</button><div class="note-block gold"><strong>60 saniyelik tur</strong><p>Beş kartı art arda sesli yanıtla. Emin olmadığını yıldızlı soru havuzuna geri bağla.</p></div></aside></div>`;
+    <div class="flash-stage"><button class="flash-card" id="flash-card" aria-label="Kartı çevir"><div><p class="eyebrow">KART ${state.flashIndex + 1} / ${flashcards.length}</p><h3>${esc(f.front)}</h3><p class="flash-answer">${esc(f.back)}</p><small>Çevirmek için tıkla</small></div></button><aside class="flash-controls"><button class="primary" data-known="${f.id}">${state.knownCards.has(f.id) ? "Biliniyor ✓" : "Biliyordum"}</button><button class="secondary" data-next-card>Sonraki kart</button><button class="secondary" data-random-card>Rastgele kart</button></aside></div>`;
 }
 
 function renderManage() {
